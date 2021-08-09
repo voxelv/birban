@@ -1,0 +1,188 @@
+[gd_scene format=2]
+
+[node name="urban_building_02" type="Spatial"]
+
+[node name="CSGBox" type="CSGBox" parent="."]
+use_collision = true
+width = 16.0
+height = 0.5
+depth = 16.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CSGBox2" type="CSGBox" parent="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16 )
+width = 16.0
+height = 0.5
+depth = 16.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CSGBox" type="CSGBox" parent="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 8 )
+width = 14.0
+height = 14.0
+depth = 30.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CSGBox" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 8, -11 )
+width = 6.0
+height = 4.0
+depth = 6.0
+
+[node name="CSGBox2" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 9, -11 )
+operation = 2
+width = 4.0
+height = 4.0
+depth = 4.0
+
+[node name="CSGBox3" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, -13 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox4" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, -10 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox5" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, -7 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox6" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, -4 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox7" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4, -13 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox8" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4, -10 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox9" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4, -7 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox10" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4, -4 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox11" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 4, 14.5 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox12" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 4, 14.5 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox13" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 4, 14.5 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox14" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.5, 4, 14.5 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox15" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, -4, -15.5 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox16" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, -4, -15.5 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox17" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, -4, -15.5 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox18" type="CSGBox" parent="CSGBox/CSGBox"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.5, -4, -15.5 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox3" type="CSGBox" parent="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 15 )
+width = 12.0
+height = 24.0
+depth = 14.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CSGBox" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 7, -7 )
+height = 12.0
+
+[node name="CSGBox2" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7, -7 )
+height = 12.0
+
+[node name="CSGBox3" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, -7 )
+height = 12.0
+
+[node name="CSGBox19" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6, 9, 5 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox20" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6, 9, 2 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox21" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6, 9, -1 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox22" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6, 9, -4 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox23" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, 9, 5 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox24" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, 9, 2 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox25" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, 9, -1 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox26" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, 9, -4 )
+operation = 2
+height = 4.0
+
+[node name="CSGBox4" type="CSGBox" parent="CSGBox/CSGBox3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 16, 4 )
+height = 10.0

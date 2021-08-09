@@ -1,0 +1,160 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main_environment.tres" type="Environment" id=1]
+[ext_resource path="res://buildings/urban_building_01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://buildings/urban_building_02.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player.tscn" type="PackedScene" id=4]
+
+[node name="main" type="Node"]
+
+[node name="world" type="Spatial" parent="."]
+
+[node name="buildings" type="Spatial" parent="world"]
+
+[node name="urban_building_01" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="urban_building_04" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -16 )
+
+[node name="urban_building_02" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 16 )
+
+[node name="urban_building_20" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1, -55 )
+
+[node name="urban_building_21" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1, -71 )
+
+[node name="urban_building_22" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1, -39 )
+
+[node name="urban_building_23" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1, 0 )
+
+[node name="urban_building_24" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1, -16 )
+
+[node name="urban_building_25" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1, 16 )
+
+[node name="urban_building_03" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 1, 16 )
+
+[node name="urban_building_08" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42, 1, 32 )
+
+[node name="urban_building_09" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 58, 1, 32 )
+
+[node name="urban_building_05" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42, 1, 0 )
+
+[node name="urban_building_07" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 58, 1, 16 )
+
+[node name="urban_building_10" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42, 1, -71 )
+
+[node name="urban_building_11" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26, 1, -55 )
+
+[node name="urban_building_12" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26, 1, -39 )
+
+[node name="urban_building_13" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 58, 1, -55 )
+
+[node name="urban_building_14" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 42, 1, -39 )
+
+[node name="urban_building_15" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1, -55 )
+
+[node name="urban_building_16" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -16, 1, -71 )
+
+[node name="urban_building_17" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -32, 1, -71 )
+
+[node name="urban_building_18" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -16, 1, -39 )
+
+[node name="urban_building_19" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -32, 1, -55 )
+
+[node name="urban_building_26" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 1, 48 )
+
+[node name="urban_building_27" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 1, 32 )
+
+[node name="urban_building_28" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 1, 64 )
+
+[node name="urban_building_29" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10, 1, 48 )
+
+[node name="urban_building_30" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -26, 1, 32 )
+
+[node name="urban_building_31" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -42, 1, 32 )
+
+[node name="urban_building_32" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -26, 1, 64 )
+
+[node name="urban_building_33" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -42, 1, 48 )
+
+[node name="urban_building_34" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1, 64 )
+
+[node name="urban_building_35" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1, 48 )
+
+[node name="urban_building_36" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1, 80 )
+
+[node name="urban_building_37" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 64, 1, 64 )
+
+[node name="urban_building_38" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 48, 1, 48 )
+
+[node name="urban_building_39" parent="world/buildings" instance=ExtResource( 2 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 32, 1, 48 )
+
+[node name="urban_building_40" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 48, 1, 80 )
+
+[node name="urban_building_41" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 32, 1, 64 )
+
+[node name="urban_building_06" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26, 1, -23 )
+
+[node name="urban_building_42" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -58, 1, 0 )
+
+[node name="urban_building_43" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -42, 1, 16 )
+
+[node name="urban_building_44" parent="world/buildings" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -74, 1, -23 )
+
+[node name="Base" type="CSGBox" parent="world"]
+use_collision = true
+width = 250.0
+depth = 250.0
+
+[node name="lights" type="Spatial" parent="world"]
+
+[node name="player" parent="world" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 0 )
+
+[node name="player_spawn" type="Spatial" parent="world"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 0 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
