@@ -1,11 +1,13 @@
 extends KinematicBody
 
 export var speed : float = 20
+export var air_speed : float = 20
 export var acceleration : float = 15
 export var air_acceleration : float = 5
 export var gravity : float = 0.98
 export var max_terminal_velocity : float = 54
 export var jump_power : float = 20
+export var flap_power : float = 2
 
 export(float, 0.1, 1.0) var mouse_sensitivity := 0.3
 #@export_range(-90.0, 0.0)
@@ -60,8 +62,10 @@ func handle_movement(delta):
 	
 	direction = direction.normalized()
 	
-	var accel = acceleration if is_on_floor() else air_acceleration
-	velocity = velocity.linear_interpolate(direction * speed, accel * delta)
+	if is_on_floor():
+		velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
+	else:
+		velocity = velocity.linear_interpolate(direction * air_speed, air_acceleration * delta)
 	
 	if is_on_floor():
 		y_velocity = -0.01
@@ -70,6 +74,8 @@ func handle_movement(delta):
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		y_velocity = jump_power
+	elif Input.is_action_just_pressed("jump"):
+		y_velocity = flap_power
 	
 	velocity.y = y_velocity
 	velocity = move_and_slide(velocity, Vector3.UP)

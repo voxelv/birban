@@ -15,79 +15,126 @@ height = 20.0
 depth = 14.0
 
 [node name="window" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -7, -5 )
 operation = 2
-width = 16.0
 height = 4.0
 
 [node name="window2" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -7, -2 )
 operation = 2
-width = 16.0
 height = 4.0
 
 [node name="window3" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -7, 2 )
 operation = 2
-width = 16.0
 height = 4.0
 
 [node name="window4" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -7, 5 )
 operation = 2
-width = 16.0
 height = 4.0
 
 [node name="window5" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 7, -5 )
 operation = 2
-width = 16.0
 height = 4.0
 
 [node name="window6" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 7, -2 )
 operation = 2
-width = 16.0
 height = 4.0
 
 [node name="window7" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 7, 2 )
 operation = 2
-width = 16.0
 height = 4.0
 
 [node name="window8" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 7, 5 )
 operation = 2
-width = 16.0
 height = 4.0
 
 [node name="window9" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -5 )
 operation = 2
-width = 16.0
 height = 4.0
 
 [node name="window10" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -2 )
 operation = 2
-width = 16.0
 height = 4.0
 
 [node name="window11" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 2 )
 operation = 2
-width = 16.0
 height = 4.0
 
 [node name="window12" type="CSGBox" parent="CSGBox2/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 5 )
 operation = 2
-width = 16.0
+height = 4.0
+
+[node name="window13" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -7, -5 )
+operation = 2
+height = 4.0
+
+[node name="window14" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -7, -2 )
+operation = 2
+height = 4.0
+
+[node name="window15" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -7, 2 )
+operation = 2
+height = 4.0
+
+[node name="window16" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -7, 5 )
+operation = 2
+height = 4.0
+
+[node name="window17" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 7, -5 )
+operation = 2
+height = 4.0
+
+[node name="window18" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 7, -2 )
+operation = 2
+height = 4.0
+
+[node name="window19" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 7, 2 )
+operation = 2
+height = 4.0
+
+[node name="window20" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 7, 5 )
+operation = 2
+height = 4.0
+
+[node name="window21" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, -5 )
+operation = 2
+height = 4.0
+
+[node name="window22" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, -2 )
+operation = 2
+height = 4.0
+
+[node name="window23" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 2 )
+operation = 2
+height = 4.0
+
+[node name="window24" type="CSGBox" parent="CSGBox2/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 5 )
+operation = 2
 height = 4.0
 
 [node name="CSGBox2" type="CSGBox" parent="CSGBox2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
 width = 12.0
-height = 22.0
-depth = 13.0
+depth = 12.0
