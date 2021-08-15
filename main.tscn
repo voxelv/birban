@@ -151,12 +151,10 @@ depth = 250.0
 [node name="lights" type="Spatial" parent="world"]
 
 [node name="player" parent="world" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 0 )
-speed = 5.0
-acceleration = 2.0
-air_acceleration = 25.0
-jump_power = 40.0
-flap_power = 30.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 0 )
+speed = 20.0
+acceleration = 20.0
+mass = 100.0
 
 [node name="player_spawn" type="Spatial" parent="world"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 0 )
