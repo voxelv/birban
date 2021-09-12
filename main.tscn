@@ -1,28 +1,20 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://main_environment.tres" type="Environment" id=1]
 [ext_resource path="res://buildings/urban_building_01.tscn" type="PackedScene" id=2]
 [ext_resource path="res://buildings/urban_building_02.tscn" type="PackedScene" id=3]
 [ext_resource path="res://player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/GLTF format/road_straight.glb" type="PackedScene" id=5]
-[ext_resource path="res://assets/GLTF format/road_intersectionLine.glb" type="PackedScene" id=6]
-[ext_resource path="res://assets/GLTF format/road_bendSidewalk.glb" type="PackedScene" id=7]
-[ext_resource path="res://assets/GLTF format/road_end.glb" type="PackedScene" id=8]
+[ext_resource path="res://assets/test/grids/materials/light_checkerboard.tres" type="Material" id=5]
+[ext_resource path="res://buildings/urban_building_03.tscn" type="PackedScene" id=6]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.172549, 0.172549, 0.172549, 0.462745 )
 
 [node name="main" type="Node"]
 
 [node name="world" type="Spatial" parent="."]
 
 [node name="buildings" type="Spatial" parent="world"]
-
-[node name="urban_building_01" parent="world/buildings" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-
-[node name="urban_building_04" parent="world/buildings" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -16 )
-
-[node name="urban_building_02" parent="world/buildings" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 16 )
 
 [node name="urban_building_20" parent="world/buildings" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1, -56 )
@@ -147,106 +139,20 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -56, 1,
 [node name="urban_building_43" parent="world/buildings" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -40, 1, 16 )
 
-[node name="roads" type="Spatial" parent="world"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
+[node name="urban_building_45" parent="world/buildings" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 16 )
 
-[node name="scale_pos" type="Spatial" parent="world/roads"]
-transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 1, 0 )
+[node name="urban_building_46" parent="world/buildings" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, -1 )
 
-[node name="road_straight" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.875, 0, -0.375 )
-
-[node name="road_straight3" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.875, 0, -1.375 )
-
-[node name="road_straight4" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.875, 0, -2.375 )
-
-[node name="road_straight14" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.875, 0, -2.375 )
-
-[node name="road_straight11" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.125, 0, -2.375 )
-
-[node name="road_straight22" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.125, 0, -1.375 )
-
-[node name="road_straight23" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.125, 0, -0.375 )
-
-[node name="road_straight24" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.125, 0, 0.625 )
-
-[node name="road_straight17" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.125, 0, -4.375 )
-
-[node name="road_straight18" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.125, 0, -5.375 )
-
-[node name="road_straight19" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.125, 0, -7.375 )
-
-[node name="road_straight20" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.125, 0, -6.375 )
-
-[node name="road_straight21" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.125, 0, -8.375 )
-
-[node name="road_straight9" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.625, 0, -2.625 )
-
-[node name="road_straight10" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.375, 0, -2.625 )
-
-[node name="road_straight12" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.625, 0, -2.625 )
-
-[node name="road_straight15" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.625, 0, -2.625 )
-
-[node name="road_straight16" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.625, 0, -2.625 )
-
-[node name="road_straight13" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.625, 0, -2.625 )
-
-[node name="road_straight2" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.875, 0, 0.625 )
-
-[node name="road_straight5" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.875, 0, 3.625 )
-
-[node name="road_straight6" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.875, 0, 2.625 )
-
-[node name="road_straight7" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.875, 0, 1.625 )
-
-[node name="road_straight8" parent="world/roads/scale_pos" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.875, 0, 4.625 )
-
-[node name="road_intersectionLine" parent="world/roads/scale_pos" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.625, 0, -2.625 )
-
-[node name="road_intersectionLine3" parent="world/roads/scale_pos" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.625, 0, -2.625 )
-
-[node name="road_intersectionLine2" parent="world/roads/scale_pos" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.625, 0, -3.375 )
-
-[node name="road_bendSidewalk" parent="world/roads/scale_pos" instance=ExtResource( 7 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.375, 0, -1.375 )
-
-[node name="road_bendSidewalk2" parent="world/roads/scale_pos" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.625, 0, -2.125 )
-
-[node name="road_end" parent="world/roads/scale_pos" instance=ExtResource( 8 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.375, 0, -2.375 )
+[node name="urban_building_47" parent="world/buildings" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, -18 )
 
 [node name="Base" type="CSGBox" parent="world"]
 use_collision = true
 width = 250.0
 depth = 250.0
+material = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -257,9 +163,29 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 28.0037, 0 )
 speed = 20.0
 acceleration = 20.0
+test_string_node_path = NodePath("../../ui/VBoxContainer/test_string")
 
 [node name="player_spawn" type="Spatial" parent="world"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
+
+[node name="ui" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="test_string" type="Label" parent="ui/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 14.0
+custom_styles/normal = SubResource( 2 )
+text = "TEST"
+align = 2
+clip_text = true

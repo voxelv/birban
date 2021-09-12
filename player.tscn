@@ -6,6 +6,7 @@
 [ext_resource path="res://birb/green.tres" type="Material" id=4]
 
 [sub_resource type="SphereShape" id=1]
+radius = 0.85
 
 [sub_resource type="SphereMesh" id=2]
 
@@ -61,15 +62,17 @@ material/0 = null
 mesh = SubResource( 7 )
 material/0 = null
 
-[node name="camera_pivot" type="Spatial" parent="."]
+[node name="rotation_proxy" type="Spatial" parent="."]
+
+[node name="camera_pivot" type="Spatial" parent="rotation_proxy"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
-[node name="SpringArm" type="SpringArm" parent="camera_pivot"]
+[node name="SpringArm" type="SpringArm" parent="rotation_proxy/camera_pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
 spring_length = 5.0
 margin = 0.1
 
-[node name="camera" type="Camera" parent="camera_pivot/SpringArm"]
+[node name="camera" type="Camera" parent="rotation_proxy/camera_pivot/SpringArm"]
 current = true
 near = 0.01
 far = 1000.0
