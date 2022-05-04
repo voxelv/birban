@@ -7,6 +7,7 @@ export(Color) var color setget set_color
 
 func _ready():
 	meshes = get_meshes(self)
+	set_color(color)
 
 func set_color(color_in:Color):
 	color = color_in

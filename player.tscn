@@ -17,8 +17,8 @@ bottom_radius = 0.99
 
 [sub_resource type="CylinderMesh" id=5]
 material = ExtResource( 2 )
-top_radius = 0.5
-bottom_radius = 0.5
+top_radius = 0.2
+bottom_radius = 0.2
 height = 1.0
 
 [sub_resource type="CubeMesh" id=6]
@@ -36,6 +36,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="mesh" type="Spatial" parent="."]
+visible = false
 
 [node name="MeshInstance" type="MeshInstance" parent="mesh"]
 mesh = SubResource( 2 )

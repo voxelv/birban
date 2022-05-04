@@ -28,6 +28,8 @@ var move_state : int = MOVE.GROUND
 var air_state : int = AIR.DIVE
 var flap_threshold : float = 1.0
 # MOVEMENT DEBUG
+export(NodePath) var main_path
+onready var main := get_node(main_path) as Node
 export(NodePath) var air_color_path
 export(NodePath) var ground_color_path
 onready var air_color : ColorRect = get_node(air_color_path)
@@ -60,7 +62,10 @@ func _process(delta):
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			mouse_captured = true
-		
+	main.find_node("flap_threshold_label").text = str(flap_threshold)
+	main.find_node("air_state_dive_color").color = COLOR_ON if air_state == AIR.DIVE else COLOR_DEFAULT
+	main.find_node("air_state_flap_color").color = COLOR_ON if air_state == AIR.FLAP else COLOR_DEFAULT
+	
 func _input(event):
 	if event is InputEventMouseButton:
 		if (event as InputEventMouseButton).button_index == BUTTON_LEFT:
@@ -93,7 +98,7 @@ func handle_movement(delta):
 			move_state = MOVE.AIR
 		velocity = handle_in_air_movement(delta)
 	
-	vec_helper.transform = Transform().looking_at(-velocity, Vector3.UP).scaled(Vector3(velocity.length(), velocity.length(), velocity.length()))
+	vec_helper.transform = Transform.IDENTITY.looking_at(velocity if velocity.length() > 1.0 else Vector3.DOWN, Vector3.UP).scaled(Vector3.ONE * max(0.9, velocity.length()))
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
 	if translation.y < -125.0:
@@ -153,16 +158,15 @@ func get_input()->Vector3:
 
 func handle_in_air_movement(delta):
 	var max_turn = 20.0
-	var max_pitch = 4.0
+	var max_pitch = deg2rad(20.0)
 	
 	var v = Vector3.ZERO
 	var input_vec = get_input()
 	visual.rotate(Vector3.UP, clamp(-input_vec.x * delta, -max_turn, max_turn))
 	visual.rotation.y = fposmod(visual.rotation.y, TAU)
-	var move_vec = visual.transform.basis * Vector3.FORWARD * 10.0
-	v = move_vec
+	visual.rotation.z = lerp(visual.rotation.z, max_pitch * -input_vec.x, 2.0 * delta)
 	
-	v.y = velocity.y
+	v = velocity
 	
 	if Input.is_action_just_pressed("jump"):
 		if air_state == AIR.DIVE:
