@@ -19,19 +19,26 @@ export(float, 0.1, 1.0) var mouse_sensitivity := 0.3
 export(float, -90.0, 0.0) var min_pitch := -50.0
 export(float, 0.0, 90.0) var max_pitch := 50.0
 
-# DEBUG STUFF
-export(NodePath) var test_string_node_path
-onready var test_string = get_node(test_string_node_path)
+# Movement State
+enum MOVE {GROUND, AIR, CNT}
+var move_state : int = MOVE.GROUND
+# MOVEMENT DEBUG
+export(NodePath) var air_color_path
+export(NodePath) var ground_color_path
+onready var air_color : ColorRect = get_node(air_color_path)
+onready var ground_color : ColorRect = get_node(ground_color_path)
+const COLOR_DEFAULT := Color.dimgray
+const COLOR_ON := Color.green
+onready var vec_helper = find_node("vec_helper") as Spatial
 
 # On Ground
 var velocity : Vector3
-var y_velocity : float
 
 # Camera
 var mouse_captured := false
 
 onready var camera_pivot := find_node("camera_pivot") as Spatial
-onready var camera := find_node("camera") as Camera
+#onready var camera := find_node("camera") as Camera
 onready var visual := find_node("mesh") as Spatial
 
 func _ready():
@@ -50,6 +57,11 @@ func _process(delta):
 			mouse_captured = true
 		
 func _input(event):
+	if event is InputEventMouseButton:
+		if (event as InputEventMouseButton).button_index == BUTTON_LEFT:
+			if (event as InputEventMouseButton).pressed:
+				pass
+	
 	if event is InputEventMouseMotion:
 		if mouse_captured:
 			camera_pivot.rotation_degrees.y -= event.relative.x * mouse_sensitivity
@@ -63,23 +75,30 @@ func _physics_process(delta):
 func handle_movement(delta):
 #	var test_string := get_tree().get_root().find_node("test_string") as Label
 	if is_on_floor():
-#	if true:
-		test_string.text = test_string.text.insert(test_string.text.length(), "G")
+		if(move_state == MOVE.AIR):
+			air_color.color = COLOR_DEFAULT
+			ground_color.color = COLOR_ON
+			move_state = MOVE.GROUND
+			velocity.y = 0.0
 		velocity = handle_on_ground_movement(delta)
 	else:
-		test_string.text = test_string.text.insert(test_string.text.length(), "A")
+		if(move_state == MOVE.GROUND):
+			air_color.color = COLOR_ON
+			ground_color.color = COLOR_DEFAULT
+			move_state = MOVE.AIR
 		velocity = handle_in_air_movement(delta)
 	
+	vec_helper.transform = Transform().looking_at(-velocity, Vector3.UP).scaled(Vector3(velocity.length(), velocity.length(), velocity.length()))
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
 	if translation.y < -125.0:
 		var pos = get_parent().find_node("player_spawn").translation
-		visual.rotation.y = 0.0
+		visual.transform = Transform.IDENTITY
 		translation = pos
 		velocity = Vector3.ZERO
 
 func handle_on_ground_movement(delta):
-	var direction = Vector3()
+	var direction = Vector3.ZERO
 	
 	if Input.is_action_pressed("move_forward"):
 		direction -= camera_pivot.transform.basis.z
@@ -98,17 +117,15 @@ func handle_on_ground_movement(delta):
 	var v := velocity
 	
 	v = v.linear_interpolate(direction * speed, acceleration * delta)
-	var look_dir = -v.angle_to(Vector3.ZERO)
+	v.y = -0.01
 	
 #	if v.length_squared() > 0.25:
 #		visual.rotation.y = lerp_angle(visual.rotation.y, look_dir, 1.0 * delta)
-	
-	y_velocity += -0.01
+	visual.transform = visual.transform.interpolate_with(Transform(camera_pivot.transform.basis), 5.0 * delta).scaled(Vector3.ONE)
+	visual.transform = Transform.IDENTITY.rotated(Vector3.UP, visual.get_rotation().y)
 	
 	if Input.is_action_just_pressed("jump"):
-		y_velocity = jump_power
-		
-	v.y = y_velocity
+		v.y = jump_power
 	
 	return(v)
 
@@ -130,7 +147,7 @@ func get_input()->Vector3:
 	return(direction)
 
 func handle_in_air_movement(delta):
-	var max_turn = 10.0
+	var max_turn = 20.0
 	var max_pitch = 4.0
 	
 	var v = Vector3.ZERO
@@ -140,8 +157,12 @@ func handle_in_air_movement(delta):
 	var move_vec = visual.transform.basis * Vector3.FORWARD * 10.0
 	v = move_vec
 	
+	if Input.is_action_just_pressed("jump"):
+		v.y = jump_power
+	else:
+		v.y = velocity.y
+	
 	# Gravity
-	v.y = velocity.y
 	v.y += -10.0 * delta
 	
 	return(v)  

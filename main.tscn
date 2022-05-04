@@ -6,9 +6,7 @@
 [ext_resource path="res://player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/test/grids/materials/light_checkerboard.tres" type="Material" id=5]
 [ext_resource path="res://buildings/urban_building_03.tscn" type="PackedScene" id=6]
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.172549, 0.172549, 0.172549, 0.462745 )
+[ext_resource path="res://vec_helper.tscn" type="PackedScene" id=7]
 
 [node name="main" type="Node"]
 
@@ -163,7 +161,11 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 28.0037, 0 )
 speed = 20.0
 acceleration = 20.0
-test_string_node_path = NodePath("../../ui/VBoxContainer/test_string")
+air_color_path = NodePath("../../ui/VBoxContainer/HBoxContainer/air_color")
+ground_color_path = NodePath("../../ui/VBoxContainer/HBoxContainer/ground_color")
+
+[node name="vec_helper" parent="world/player" instance=ExtResource( 7 )]
+color = Color( 0.992157, 0, 1, 1 )
 
 [node name="player_spawn" type="Spatial" parent="world"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 0 )
@@ -182,10 +184,31 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="test_string" type="Label" parent="ui/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/VBoxContainer"]
 margin_right = 1024.0
 margin_bottom = 14.0
-custom_styles/normal = SubResource( 2 )
-text = "TEST"
-align = 2
-clip_text = true
+
+[node name="Label" type="Label" parent="ui/VBoxContainer/HBoxContainer"]
+margin_right = 67.0
+margin_bottom = 14.0
+text = "GROUND: "
+
+[node name="ground_color" type="ColorRect" parent="ui/VBoxContainer/HBoxContainer"]
+margin_left = 71.0
+margin_right = 528.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+color = Color( 0.152941, 0.152941, 0.152941, 1 )
+
+[node name="Label2" type="Label" parent="ui/VBoxContainer/HBoxContainer"]
+margin_left = 532.0
+margin_right = 562.0
+margin_bottom = 14.0
+text = "AIR: "
+
+[node name="air_color" type="ColorRect" parent="ui/VBoxContainer/HBoxContainer"]
+margin_left = 566.0
+margin_right = 1024.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+color = Color( 0.152941, 0.152941, 0.152941, 1 )

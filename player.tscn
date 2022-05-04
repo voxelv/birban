@@ -40,27 +40,22 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="mesh"]
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="mesh"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1 )
 mesh = SubResource( 4 )
-material/0 = null
 
 [node name="MeshInstance3" type="MeshInstance" parent="mesh"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.5 )
 mesh = SubResource( 5 )
-material/0 = null
 
 [node name="MeshInstance4" type="MeshInstance" parent="mesh"]
 mesh = SubResource( 6 )
-material/0 = null
 
 [node name="MeshInstance5" type="MeshInstance" parent="mesh"]
 
 [node name="MeshInstance6" type="MeshInstance" parent="mesh"]
 mesh = SubResource( 7 )
-material/0 = null
 
 [node name="rotation_proxy" type="Spatial" parent="."]
 
