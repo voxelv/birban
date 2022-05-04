@@ -13,6 +13,8 @@ export var thrust_power : float = 1
 export var drag_coef : float = 1
 export var lift_coef : float = 1
 export var mass : float = 1
+export var max_flap : float = 20
+export var flap_power : float = 4
 
 # Camera exports
 export(float, 0.1, 1.0) var mouse_sensitivity := 0.3
@@ -21,7 +23,10 @@ export(float, 0.0, 90.0) var max_pitch := 50.0
 
 # Movement State
 enum MOVE {GROUND, AIR, CNT}
+enum AIR {DIVE, FLAP, CNT}
 var move_state : int = MOVE.GROUND
+var air_state : int = AIR.DIVE
+var flap_threshold : float = 1.0
 # MOVEMENT DEBUG
 export(NodePath) var air_color_path
 export(NodePath) var ground_color_path
@@ -157,13 +162,23 @@ func handle_in_air_movement(delta):
 	var move_vec = visual.transform.basis * Vector3.FORWARD * 10.0
 	v = move_vec
 	
-	if Input.is_action_just_pressed("jump"):
-		v.y = jump_power
-	else:
-		v.y = velocity.y
+	v.y = velocity.y
 	
-	# Gravity
-	v.y += -10.0 * delta
+	if Input.is_action_just_pressed("jump"):
+		if air_state == AIR.DIVE:
+			air_state = AIR.FLAP
+		elif air_state == AIR.FLAP:
+			flap_threshold += flap_power
+			flap_threshold = clamp(flap_threshold, 1.0, max_flap)
+	
+	if air_state == AIR.FLAP:
+		v.y = lerp(v.y, flap_threshold, 10.0*delta)
+		if v.y >= flap_threshold - 0.001:
+			air_state = AIR.DIVE
+	elif air_state == AIR.DIVE:
+		flap_threshold = lerp(flap_threshold, 1.0, 2.0*delta)
+		# Gravity
+		v.y += -10.0 * delta
 	
 	return(v)  
 
