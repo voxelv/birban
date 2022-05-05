@@ -162,8 +162,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 28.0037, 0 )
 speed = 20.0
 acceleration = 20.0
 main_path = NodePath("../..")
-air_color_path = NodePath("../../ui/VBoxContainer/HBoxContainer/air_color")
-ground_color_path = NodePath("../../ui/VBoxContainer/HBoxContainer/ground_color")
 
 [node name="vec_helper" parent="world/player" instance=ExtResource( 7 )]
 color = Color( 1, 0.631373, 0, 1 )

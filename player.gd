@@ -30,10 +30,6 @@ var flap_threshold : float = 1.0
 # MOVEMENT DEBUG
 export(NodePath) var main_path
 onready var main := get_node(main_path) as Node
-export(NodePath) var air_color_path
-export(NodePath) var ground_color_path
-onready var air_color : ColorRect = get_node(air_color_path)
-onready var ground_color : ColorRect = get_node(ground_color_path)
 const COLOR_DEFAULT := Color.dimgray
 const COLOR_ON := Color.green
 onready var vec_helper = find_node("vec_helper") as Spatial
@@ -63,6 +59,8 @@ func _process(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			mouse_captured = true
 	main.find_node("flap_threshold_label").text = str(flap_threshold)
+	main.find_node("air_color").color = COLOR_ON if move_state == MOVE.AIR else COLOR_DEFAULT
+	main.find_node("ground_color").color = COLOR_ON if move_state == MOVE.GROUND else COLOR_DEFAULT
 	main.find_node("air_state_dive_color").color = COLOR_ON if air_state == AIR.DIVE else COLOR_DEFAULT
 	main.find_node("air_state_flap_color").color = COLOR_ON if air_state == AIR.FLAP else COLOR_DEFAULT
 	
@@ -86,19 +84,17 @@ func handle_movement(delta):
 #	var test_string := get_tree().get_root().find_node("test_string") as Label
 	if is_on_floor():
 		if(move_state == MOVE.AIR):
-			air_color.color = COLOR_DEFAULT
-			ground_color.color = COLOR_ON
 			move_state = MOVE.GROUND
 			velocity.y = 0.0
 		velocity = handle_on_ground_movement(delta)
 	else:
 		if(move_state == MOVE.GROUND):
-			air_color.color = COLOR_ON
-			ground_color.color = COLOR_DEFAULT
 			move_state = MOVE.AIR
 		velocity = handle_in_air_movement(delta)
 	
-	vec_helper.transform = Transform.IDENTITY.looking_at(velocity if velocity.length() > 1.0 else Vector3.DOWN, Vector3.UP).scaled(Vector3.ONE * max(0.9, velocity.length()))
+	print(str(abs(velocity.dot(Vector3.DOWN))))
+	if velocity.dot(Vector3.DOWN) < 3.0:
+		vec_helper.transform = Transform.IDENTITY.looking_at(velocity, Vector3.UP).scaled(Vector3.ONE * max(0.9, velocity.length()))
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
 	if translation.y < -125.0:
@@ -108,21 +104,7 @@ func handle_movement(delta):
 		velocity = Vector3.ZERO
 
 func handle_on_ground_movement(delta):
-	var direction = Vector3.ZERO
-	
-	if Input.is_action_pressed("move_forward"):
-		direction -= camera_pivot.transform.basis.z
-	
-	if Input.is_action_pressed("move_backward"):
-		direction += camera_pivot.transform.basis.z
-		
-	if Input.is_action_pressed("move_left"):
-		direction -= camera_pivot.transform.basis.x
-	
-	if Input.is_action_pressed("move_right"):
-		direction += camera_pivot.transform.basis.x
-	
-	direction = direction.normalized()
+	var direction = get_input_vec3_camera_aligned().normalized()
 	
 	var v := velocity
 	
@@ -139,7 +121,7 @@ func handle_on_ground_movement(delta):
 	
 	return(v)
 
-func get_input()->Vector3:
+func get_input_vec3_ones()->Vector3:
 	var direction = Vector3.ZERO
 	
 	if Input.is_action_pressed("move_forward"):
@@ -156,12 +138,28 @@ func get_input()->Vector3:
 		
 	return(direction)
 
+func get_input_vec3_camera_aligned()->Vector3:
+	var direction = Vector3.ZERO
+	
+	if Input.is_action_pressed("move_forward"):
+		direction -= camera_pivot.transform.basis.z
+	
+	if Input.is_action_pressed("move_backward"):
+		direction += camera_pivot.transform.basis.z
+		
+	if Input.is_action_pressed("move_left"):
+		direction -= camera_pivot.transform.basis.x
+	
+	if Input.is_action_pressed("move_right"):
+		direction += camera_pivot.transform.basis.x
+	return(direction)
+
 func handle_in_air_movement(delta):
 	var max_turn = 20.0
 	var max_pitch = deg2rad(20.0)
 	
 	var v = Vector3.ZERO
-	var input_vec = get_input()
+	var input_vec = get_input_vec3_camera_aligned()
 	visual.rotate(Vector3.UP, clamp(-input_vec.x * delta, -max_turn, max_turn))
 	visual.rotation.y = fposmod(visual.rotation.y, TAU)
 	visual.rotation.z = lerp(visual.rotation.z, max_pitch * -input_vec.x, 2.0 * delta)
@@ -171,9 +169,10 @@ func handle_in_air_movement(delta):
 	if Input.is_action_just_pressed("jump"):
 		if air_state == AIR.DIVE:
 			air_state = AIR.FLAP
+			flap_threshold = abs(v.y) + flap_power
 		elif air_state == AIR.FLAP:
 			flap_threshold += flap_power
-			flap_threshold = clamp(flap_threshold, 1.0, max_flap)
+		flap_threshold = clamp(flap_threshold, 1.0, max_flap)
 	
 	if air_state == AIR.FLAP:
 		v.y = lerp(v.y, flap_threshold, 10.0*delta)
