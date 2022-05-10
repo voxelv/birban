@@ -13,7 +13,7 @@ radius = 0.85
 [sub_resource type="CylinderMesh" id=4]
 material = ExtResource( 2 )
 top_radius = 0.0
-bottom_radius = 0.99
+bottom_radius = 0.387
 
 [sub_resource type="CylinderMesh" id=5]
 material = ExtResource( 2 )
@@ -36,9 +36,9 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="mesh" type="Spatial" parent="."]
-visible = false
 
 [node name="MeshInstance" type="MeshInstance" parent="mesh"]
+visible = false
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
 

@@ -92,9 +92,12 @@ func handle_movement(delta):
 			move_state = MOVE.AIR
 		velocity = handle_in_air_movement(delta)
 	
-	print(str(abs(velocity.dot(Vector3.DOWN))))
-	if velocity.dot(Vector3.DOWN) < 3.0:
+	print(velocity.normalized().dot(Vector3.DOWN))
+	if velocity.normalized().dot(Vector3.DOWN) < 0.9 and velocity.normalized().dot(Vector3.UP) < 0.9:
+		vec_helper.visible = true
 		vec_helper.transform = Transform.IDENTITY.looking_at(velocity, Vector3.UP).scaled(Vector3.ONE * max(0.9, velocity.length()))
+	else:
+		vec_helper.visible = false
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
 	if translation.y < -125.0:
@@ -157,14 +160,11 @@ func get_input_vec3_camera_aligned()->Vector3:
 func handle_in_air_movement(delta):
 	var max_turn = 20.0
 	var max_pitch = deg2rad(20.0)
+	var max_fly_speed = 20.0
 	
-	var v = Vector3.ZERO
-	var input_vec = get_input_vec3_camera_aligned()
-	visual.rotate(Vector3.UP, clamp(-input_vec.x * delta, -max_turn, max_turn))
-	visual.rotation.y = fposmod(visual.rotation.y, TAU)
-	visual.rotation.z = lerp(visual.rotation.z, max_pitch * -input_vec.x, 2.0 * delta)
-	
-	v = velocity
+	var v := velocity
+	var direction = get_input_vec3_camera_aligned().normalized()
+	v = v.linear_interpolate(direction * max_fly_speed, acceleration * delta)
 	
 	if Input.is_action_just_pressed("jump"):
 		if air_state == AIR.DIVE:
