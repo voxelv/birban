@@ -158,7 +158,7 @@ __meta__ = {
 [node name="lights" type="Spatial" parent="world"]
 
 [node name="player" parent="world" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 28.0037, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 28, 4 )
 speed = 20.0
 acceleration = 20.0
 main_path = NodePath("../..")
@@ -214,52 +214,19 @@ margin_top = 18.0
 margin_right = 1024.0
 margin_bottom = 32.0
 
-[node name="Label" type="Label" parent="ui/VBoxContainer/HBoxContainer2"]
-margin_right = 101.0
+[node name="Control" type="Control" parent="ui/VBoxContainer/HBoxContainer2"]
+margin_right = 933.0
 margin_bottom = 14.0
-text = "Flap Threshold: "
+size_flags_horizontal = 3
 
-[node name="flap_threshold_label" type="Label" parent="ui/VBoxContainer/HBoxContainer2"]
-margin_left = 105.0
-margin_right = 133.0
+[node name="Label2" type="Label" parent="ui/VBoxContainer/HBoxContainer2"]
+margin_left = 937.0
+margin_right = 992.0
+margin_bottom = 14.0
+text = "Velocity:"
+
+[node name="velocity" type="Label" parent="ui/VBoxContainer/HBoxContainer2"]
+margin_left = 996.0
+margin_right = 1024.0
 margin_bottom = 14.0
 text = "00.0"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="ui/VBoxContainer"]
-margin_top = 36.0
-margin_right = 1024.0
-margin_bottom = 50.0
-
-[node name="Label" type="Label" parent="ui/VBoxContainer/HBoxContainer3"]
-margin_right = 62.0
-margin_bottom = 14.0
-text = "Air State: "
-
-[node name="Label2" type="Label" parent="ui/VBoxContainer/HBoxContainer3"]
-margin_left = 66.0
-margin_right = 104.0
-margin_bottom = 14.0
-text = "DIVE: "
-
-[node name="air_state_dive_color" type="ColorRect" parent="ui/VBoxContainer/HBoxContainer3"]
-margin_left = 108.0
-margin_right = 540.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-
-[node name="Label3" type="Label" parent="ui/VBoxContainer/HBoxContainer3"]
-margin_left = 544.0
-margin_right = 583.0
-margin_bottom = 14.0
-text = "FLAP: "
-
-[node name="air_state_flap_color" type="ColorRect" parent="ui/VBoxContainer/HBoxContainer3"]
-margin_left = 587.0
-margin_right = 1020.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-
-[node name="ColorRect3" type="ColorRect" parent="ui/VBoxContainer/HBoxContainer3"]
-margin_left = 1024.0
-margin_right = 1024.0
-margin_bottom = 14.0

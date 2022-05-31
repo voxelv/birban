@@ -31,11 +31,14 @@ size = Vector3( 0.1, 2.02, 1 )
 
 [node name="player" type="KinematicBody"]
 script = ExtResource( 1 )
+min_pitch = -89.0
+max_pitch = 89.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
 
 [node name="mesh" type="Spatial" parent="."]
+visible = false
 
 [node name="MeshInstance" type="MeshInstance" parent="mesh"]
 visible = false
@@ -61,7 +64,6 @@ mesh = SubResource( 7 )
 [node name="rotation_proxy" type="Spatial" parent="."]
 
 [node name="camera_pivot" type="Spatial" parent="rotation_proxy"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="SpringArm" type="SpringArm" parent="rotation_proxy/camera_pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )

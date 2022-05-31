@@ -17,17 +17,21 @@ albedo_color = Color( 1, 0.631373, 0, 1 )
 [sub_resource type="CylinderMesh" id=2]
 material = SubResource( 4 )
 top_radius = 0.0
-bottom_radius = 0.04
+bottom_radius = 0.08
 height = 0.1
 
 [node name="vec_helper" type="Spatial"]
 script = ExtResource( 1 )
 color = Color( 1, 0.537255, 0, 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="meshes" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="meshes"]
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, -0.45 )
 mesh = SubResource( 1 )
+skeleton = NodePath("../..")
 
-[node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
+[node name="MeshInstance" type="MeshInstance" parent="meshes/MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 mesh = SubResource( 2 )
