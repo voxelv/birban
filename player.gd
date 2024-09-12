@@ -95,11 +95,11 @@ func handle_movement(delta):
 		if(move_state == MOVE.AIR):
 			move_state = MOVE.GROUND
 			velocity.y = 0.0
-		velocity = handle_on_ground_movement(delta)
+		velocity = handle_on_ground_movement(velocity, delta)
 	else:
 		if(move_state == MOVE.GROUND):
 			move_state = MOVE.AIR
-		velocity = handle_in_air_movement(delta)
+		velocity = handle_in_air_movement(velocity, delta)
 	
 	update_velocity_vec_helper()
 	
@@ -114,12 +114,10 @@ func handle_movement(delta):
 		visual.transform = Transform.IDENTITY
 		velocity = Vector3.ZERO
 
-func handle_on_ground_movement(delta):
+func handle_on_ground_movement(v:Vector3, delta):
 	var direction = get_input_vec3_camera_aligned()
 	direction.y = 0.0
 	direction = direction.normalized()
-	
-	var v := velocity
 	
 	v = v.linear_interpolate(direction * speed, acceleration * delta)
 	v.y = -0.01
@@ -133,10 +131,9 @@ func handle_on_ground_movement(delta):
 	
 	return(v)
 
-func handle_in_air_movement(delta):
+func handle_in_air_movement(v:Vector3, delta):
 	var max_fly_speed = 20.0
 	
-	var v := velocity
 	var direction = get_input_vec3_camera_aligned().normalized()
 	v = v.linear_interpolate(direction * max_fly_speed, acceleration * delta)
 	
@@ -146,7 +143,8 @@ func handle_in_air_movement(delta):
 	return(v)  
 
 func update_velocity_vec_helper():
-	main.find_node("velocity").text = str(velocity.length()) + " a: " + str(rad2deg(transform.basis.z.angle_to(velocity)))
+	var scale = range_lerp(velocity.length(), 0.01, 20.0, 0.5, 10.0)
+	main.find_node("velocity").text = str(velocity.length()) + " s: " + str(scale)
 #	var v = velocity.normalized()
 #	var v_no_y = Vector3(v.x, 0.0, v.z).normalized()
 #	vec_helper.transform = Transform.IDENTITY.rotated(
@@ -161,10 +159,10 @@ func update_velocity_vec_helper():
 #	)
 	if(velocity.length() > 0.01):
 		vec_helper.transform.basis = Basis(
-			transform.basis.z.cross(velocity.normalized()).normalized(), 
-			transform.basis.z.angle_to(velocity.normalized())
+			transform.basis.z.normalized().cross(velocity.normalized()).normalized(), 
+			transform.basis.z.normalized().angle_to(velocity.normalized())
 		).scaled(
-			Vector3.ONE*min(max(1.0, velocity.length()), 10.0)
+			Vector3.ONE * scale
 		)
 
 
